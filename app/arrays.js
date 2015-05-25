@@ -35,6 +35,8 @@ exports.arraysAnswers = {
   },
 
   removeWithoutCopy : function removeWithoutCopy(arr, item) {
+    // I didn't want to use Array methods here which people always google about :-) Just saying
+
     var initLength = arr.length,
     nullCount = 0;
     for(var i = 0; i <arr.length; i++) {
@@ -61,28 +63,38 @@ exports.arraysAnswers = {
       }
     }
 
-    arr.length = initLength - nullCount;
+    arr.length = initLength - nullCount; //remove the nulls at the end
     return arr;
   },
 
   append : function(arr, item) {
-
+    arr[arr.length] = item;
+    return arr;
   },
 
   truncate : function(arr) {
-
+    arr.length -= 1;
+    return arr;
   },
 
   prepend : function(arr, item) {
-
+    for(var i = arr.length; i > 0; i--) {
+      arr[i] = arr[i-1];
+    }
+    arr[0] = item;
+    return arr;
   },
 
   curtail : function(arr) {
-
+    for(var i = 0; i < arr.length; i++) {
+      arr[i] = arr[i+1];
+    }
+    arr.length -= 1;
+    return arr;
   },
 
   concat : function(arr1, arr2) {
-
+    
   },
 
   insert : function(arr, item, index) {
